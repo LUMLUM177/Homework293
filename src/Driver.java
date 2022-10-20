@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public abstract class Driver<A> {
 
@@ -52,7 +53,20 @@ public abstract class Driver<A> {
         }
     }
 
-//    @Override
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Driver<?> driver = (Driver<?>) o;
+        return isDriverLicense == driver.isDriverLicense && experience == driver.experience && name.equals(driver.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, isDriverLicense, experience);
+    }
+
+    //    @Override
 //    public String toString() {
 //        return "Информация о водителе: " +
 //                "ФИО " + name +

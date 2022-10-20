@@ -80,29 +80,20 @@ public class Main {
         System.out.println();
 
         int size = 15;
-        ArrayList<Integer> numberFirst = new ArrayList<>(size);
-        ArrayList<Integer> numberSecond = new ArrayList<>(size);
+        Set<MultiplicationTable> tableMulti = new HashSet<>(size);
 
-        int a, b, j = 0;
-
-        for (int i = 0; i < size; i++) {
-            a = (int) getRandomIntegerBetweenRange(2, 9);
-            b = (int) getRandomIntegerBetweenRange(2, 9);
-            for (j = 0; j < numberFirst.size(); j++) {
-                if ((a * b == numberFirst.get(j) * numberSecond.get(j)) &&
-                        (a == numberFirst.get(j) || a == numberSecond.get(j))) {
-                    i--;
-                    break;
-                }
-            }
-            if (j == numberFirst.size()) {
-                numberFirst.add(a);
-                numberSecond.add(b);
-            }
+        while (tableMulti.size() < 15) {
+            int a = (int) getRandomIntegerBetweenRange(2,9);
+            int b = (int) getRandomIntegerBetweenRange(2,9);
+            MultiplicationTable table = new MultiplicationTable(a,b);
+            tableMulti.add(table);
         }
 
-        for (int i = 0; i < numberFirst.size(); i++) {
-            System.out.println(numberFirst.get(i) + " * " + numberSecond.get(i));
+        Iterator<MultiplicationTable> iter = tableMulti.iterator();
+        while (iter.hasNext())
+        {
+            MultiplicationTable example = iter.next();
+            System.out.println(example);
         }
 
         PassportBuro passportBuro = new PassportBuro();

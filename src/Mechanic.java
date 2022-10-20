@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Mechanic<A extends Cars> {
 
@@ -28,6 +29,19 @@ public class Mechanic<A extends Cars> {
     public void repairTheCar(A cars) {
         cars.repairCar();
         System.out.println("Ответственный механик - " + getName() + ".");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return name.equals(mechanic.name) && company.equals(mechanic.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, company);
     }
 
     @Override

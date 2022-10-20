@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Sponsor {
 
@@ -20,4 +21,16 @@ public class Sponsor {
         return amountSupport;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sponsor sponsor = (Sponsor) o;
+        return Double.compare(sponsor.amountSupport, amountSupport) == 0 && name.equals(sponsor.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, amountSupport);
+    }
 }
