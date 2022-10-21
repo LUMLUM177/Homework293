@@ -1,0 +1,51 @@
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class Mechanic<A extends Cars> {
+
+    private String name;
+    private String company;
+
+
+    public Mechanic(String name, String company) {
+        this.name = name;
+        this.company = company;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+
+    public void performMaintenance(A cars) {
+        cars.passVerification();
+        System.out.println("Ответственный механик - " + getName() + ".");
+    }
+
+    public void repairTheCar(A cars) {
+        cars.repairCar();
+        System.out.println("Ответственный механик - " + getName() + ".");
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Mechanic<?> mechanic = (Mechanic<?>) o;
+        return name.equals(mechanic.name) && company.equals(mechanic.company);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, company);
+    }
+
+    @Override
+    public String toString() {
+        return name;
+    }
+}
