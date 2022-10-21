@@ -12,15 +12,15 @@ public class MultiplicationTable {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MultiplicationTable that = (MultiplicationTable) o;
-        return a == that.a && b == that.b;
+        return (this.a == that.a && this.b == that.b) ||
+                (this.b == that.a && this.a == that.b);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(a, b);
+        return Objects.hash(Math.min(a, b), Math.max(b, a));
     }
 
     public int getA() {

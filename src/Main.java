@@ -82,7 +82,7 @@ public class Main {
         int size = 15;
         Set<MultiplicationTable> tableMulti = new HashSet<>(size);
 
-        while (tableMulti.size() < 15) {
+        while (tableMulti.size() < 30) {
             int a = (int) getRandomIntegerBetweenRange(2,9);
             int b = (int) getRandomIntegerBetweenRange(2,9);
             MultiplicationTable table = new MultiplicationTable(a,b);
